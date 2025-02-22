@@ -14,7 +14,7 @@ curl -X POST http://localhost:8080/api/books \
     "title": "Tomorrow, and Tomorrow, and Tomorrow",
     "author": "Gabrielle Zevin",
     "isbn": "978-0593321201",
-    "basePrice": 29.99,
+    "base_price": 29.99,
     "type": "NEW_RELEASE"
   }'
 ```
@@ -27,7 +27,7 @@ curl -X POST http://localhost:8080/api/books \
     "title": "Project Hail Mary",
     "author": "Andy Weir",
     "isbn": "978-0593135204",
-    "basePrice": 19.99,
+    "base_price": 19.99,
     "type": "REGULAR"
   }'
 ```
@@ -40,7 +40,7 @@ curl -X POST http://localhost:8080/api/books \
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "isbn": "978-0446310789",
-    "basePrice": 15.99,
+    "base_price": 15.99,
     "type": "OLD_EDITION"
   }'
 ```
@@ -65,7 +65,7 @@ curl -X PUT http://localhost:8080/api/books/1 \
     "title": "Updated Title",
     "author": "Updated Author",
     "isbn": "978-0743273565",
-    "basePrice": 24.99,
+    "base_price": 24.99,
     "type": "OLD_EDITION"
   }'
 ```
@@ -129,14 +129,6 @@ curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1&useLoya
 curl -X GET http://localhost:8080/api/purchases/customer/1
 ```
 
-## Notes
-
-- Replace the IDs (1, 2, 3) with actual IDs from your database
-- The examples use `localhost:8080` - adjust the host and port if your server runs elsewhere
-- For Windows Command Prompt, replace the line continuations `\` with `^`
-- For Windows PowerShell, replace the line continuations `\` with `` ` `` (backtick)
-- The `Content-Type: application/json` header is required for POST and PUT requests with JSON body
-
 ## Testing Scenarios
 
 ### Testing Bundle Discounts
@@ -164,6 +156,9 @@ curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&use
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&useLoyaltyPoints=false"
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&useLoyaltyPoints=false"
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1&useLoyaltyPoints=false"
+
+# Get loyalty points 
+curl -X GET "http://localhost:8080/api/customers/loyalty/1"
 
 # Then redeem points for a free book
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=2&useLoyaltyPoints=true"

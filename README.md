@@ -39,23 +39,21 @@ The project follows a clean architecture approach with the following layers:
 4. Run: `mvn spring-boot:run`
 5. The application will start on `http://localhost:8080`
 
+## How to Run Tests
+
+To run the unit tests for the application, use the following Maven command:
+
+```bash
+mvn test
+```
+
+This command will execute all the tests in the `src/test/java` directory and provide a summary of the test results.
+
+Ensure that you have Maven installed and configured properly on your system before running the tests.
+
 ## API Endpoints
 
 For detailed API examples and curl commands, see [EXAMPLE.md](EXAMPLE.md)
-
-### Books
-- GET `/api/books` - List all available books
-- POST `/api/books` - Add a new book
-- PUT `/api/books/{id}` - Update a book
-- DELETE `/api/books/{id}` - Remove a book
-
-### Purchases
-- POST `/api/purchases` - Purchase books
-- GET `/api/purchases/{customerId}` - Get purchase history
-
-### Loyalty Points
-- GET `/api/loyalty/{customerId}` - Get customer loyalty points
-- POST `/api/loyalty/{customerId}/redeem` - Redeem loyalty points
 
 ## Design Decisions
 

@@ -41,4 +41,22 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
-} 
+
+    @GetMapping("/loyalty/{customerId}")
+    public ResponseEntity<LoyaltyPointsResponse> getLoyaltyPoints(@PathVariable Long customerId) {
+        int points = customerService.getLoyaltyPoints(customerId);
+        return ResponseEntity.ok(new LoyaltyPointsResponse(points));
+    }
+
+    private static class LoyaltyPointsResponse {
+        private final int loyalty_points;
+
+        public LoyaltyPointsResponse(int loyaltyPoints) {
+            this.loyalty_points = loyaltyPoints;
+        }
+
+        public int getLoyalty_points() {
+            return loyalty_points;
+        }
+    }
+}

@@ -47,4 +47,9 @@ public class CustomerService {
         }
         customerRepository.deleteById(id);
     }
+
+    public int getLoyaltyPoints(Long customerId) {
+        Customer customer = getCustomerById(customerId);
+        return customer.getLoyaltyPoints();
+    }
 } 
