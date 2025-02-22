@@ -36,7 +36,12 @@ The project follows a clean architecture approach with the following layers:
 1. Ensure you have Java 17 and Maven installed
 2. Clone the repository
 3. Navigate to the project directory
-4. Run: `mvn spring-boot:run`
+4. Run: 
+
+```bash
+mvn spring-boot:run
+```
+
 5. The application will start on `http://localhost:8080`
 
 ## How to Run Tests
