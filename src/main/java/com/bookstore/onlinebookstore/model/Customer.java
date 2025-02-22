@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @NoArgsConstructor
@@ -34,5 +35,18 @@ public class Customer {
 
     public boolean hasEnoughPointsForFreeBook() {
         return this.loyaltyPoints >= 10;
+    }
+
+    public static class LoyaltyPointsResponse {
+        @JsonProperty("loyalty_points")
+        private final int loyaltyPoints;
+
+        public LoyaltyPointsResponse(int loyaltyPoints) {
+            this.loyaltyPoints = loyaltyPoints;
+        }
+
+        public int getLoyaltyPoints() {
+            return loyaltyPoints;
+        }
     }
 } 

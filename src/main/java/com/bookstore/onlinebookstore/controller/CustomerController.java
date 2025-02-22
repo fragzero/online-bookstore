@@ -1,6 +1,7 @@
 package com.bookstore.onlinebookstore.controller;
 
 import com.bookstore.onlinebookstore.model.Customer;
+import com.bookstore.onlinebookstore.model.Customer.LoyaltyPointsResponse;
 import com.bookstore.onlinebookstore.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -48,15 +49,5 @@ public class CustomerController {
         return ResponseEntity.ok(new LoyaltyPointsResponse(points));
     }
 
-    private static class LoyaltyPointsResponse {
-        private final int loyalty_points;
 
-        public LoyaltyPointsResponse(int loyaltyPoints) {
-            this.loyalty_points = loyaltyPoints;
-        }
-
-        public int getLoyalty_points() {
-            return loyalty_points;
-        }
-    }
 }
