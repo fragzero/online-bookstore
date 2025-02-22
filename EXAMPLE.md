@@ -133,33 +133,39 @@ curl -X GET http://localhost:8080/api/purchases/customer/1
 
 ### Testing Bundle Discounts
 
-1. Create three regular books and purchase them together to test the 10% bundle discount:
+Create three regular books and purchase them together to test the 10% bundle discount:
+
+First, create a customer:
 ```bash
-# First, create a customer
 curl -X POST http://localhost:8080/api/customers \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Test Customer",
     "email": "test@example.com"
   }'
+```
 
-# Then purchase three regular books
+Then purchase three regular books:
+```bash
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=2,2,2&useLoyaltyPoints=false"
 ```
 
 ### Testing Loyalty Points
 
-1. Make multiple purchases to accumulate points:
+Make multiple purchases to accumulate 10 points:
 ```bash
-# Make purchases to get 10 points
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&useLoyaltyPoints=false"
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&useLoyaltyPoints=false"
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1,2,3&useLoyaltyPoints=false"
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=1&useLoyaltyPoints=false"
+```
 
-# Get loyalty points 
+Check if the customer have more then 10 loyalty points:
+```bash
 curl -X GET "http://localhost:8080/api/customers/loyalty/1"
+```
 
-# Then redeem points for a free book
+Then redeem points for a free book:
+```bash
 curl -X POST "http://localhost:8080/api/purchases?customerId=1&bookIds=2&useLoyaltyPoints=true"
 ``` 
